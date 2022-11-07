@@ -1,4 +1,3 @@
-import {CreatePhotosArray} from './data.js';
+import {drowThumbnails} from './thumbnail.js';
 
-//Заглушка
-CreatePhotosArray();
+drowThumbnails();

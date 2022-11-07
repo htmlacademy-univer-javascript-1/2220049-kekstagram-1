@@ -31,9 +31,6 @@ const DESCRIPTIONS = [
   'Побывал на концерте любимого исполнителя'
 ];
 
-
-const chekStringLenght = (string, max) => string.Length < max + 1;
-
 const createNewComment = (id) => ({
   id,
   avatar: `img/avatar-${id}.svg`,
@@ -49,8 +46,5 @@ const createNewPhotosData = (id) => ({
   comments: Array.from({length: COMMENTS_COUNT}, (value, index) => createNewComment(index + 1))
 });
 
-const CreatePhotosArray = () => Array.from({length: PHOTOS_COUNT}, (value, index) => createNewPhotosData(index + 1));
-export {CreatePhotosArray};
-
-//Заглушки, чтобы линтер не ругался
-chekStringLenght('djjd');
+const createPhotos = () => Array.from({length: PHOTOS_COUNT}, (value, index) => createNewPhotosData(index + 1));
+export {createPhotos};
