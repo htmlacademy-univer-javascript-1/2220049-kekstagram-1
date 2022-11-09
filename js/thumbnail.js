@@ -1,11 +1,9 @@
-import {createPhotos} from './data.js';
 
-export const drowThumbnails = ()  => {
+export const drowThumbnails = (photos)  => {
   const pictures = document.querySelector('.pictures');
   const pictureTemplate = document.querySelector('#picture')
     .content
     .querySelector('.picture');
-  const photos = createPhotos();
   const picturesFragment = document.createDocumentFragment();
   photos.forEach(({url, likes, comments}) => {
     const picture = pictureTemplate.cloneNode(true);

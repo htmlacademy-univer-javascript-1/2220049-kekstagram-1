@@ -43,8 +43,8 @@ const createNewPhotosData = (id) => ({
   url: `photos/${id}.jpg`,
   description: getRandomArrayElement(DESCRIPTIONS),
   likes: getRandomPositiveInteger(MIN_COUNT_LIKE, MAX_COUNT_LIKE),
-  comments: Array.from({length: COMMENTS_COUNT}, (value, index) => createNewComment(index + 1))
+  comments: Array.from({length: COMMENTS_COUNT}, (_, index) => createNewComment(index + 1))
 });
 
-const createPhotos = () => Array.from({length: PHOTOS_COUNT}, (value, index) => createNewPhotosData(index + 1));
+const createPhotos = () => Array.from({length: PHOTOS_COUNT}, (_, index) => createNewPhotosData(index + 1));
 export {createPhotos};
