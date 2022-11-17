@@ -1,4 +1,5 @@
-import {createPhotos} from './data.js';
-import {drowThumbnails} from './thumbnail.js';
+import { createPhotos } from './data.js';
+import { drowThumbnails } from './thumbnail.js';
 
-drowThumbnails(createPhotos());
+const data = createPhotos();
+drowThumbnails(data);
