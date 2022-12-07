@@ -1,7 +1,11 @@
+export const HASHTAG_REGEXP = /^#[A-Za-zА-Яа-яЁё0-9]{1,19}$/;
 export const MIN_COUNT_LIKE = 15;
 export const MAX_COUNT_LIKE = 200;
 export const PHOTOS_COUNT = 25;
 export const COMMENTS_COUNT = 5;
+export const MAX_HASHTAG_LENGTH = 20;
+export const MAX_HASHTAG_COUNT = 5;
+export const MAX_COMMENT_LENGTH = 140;
 export const COMMENTS_MESSAGES = [
   'Всё отлично!',
   'В целом всё неплохо. Но не всё.',
