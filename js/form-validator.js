@@ -1,4 +1,4 @@
-import { MAX_COMMENT_LENGTH, HASHTAG_REGEXP, MAX_HASHTAG_LENGTH, MAX_HASHTAG_COUNT } from './consts.js';
+import { MAX_COMMENT_LENGTH, HASHTAG_REGEXP, MAX_HASHTAG_LENGTH, MAX_HASHTAG_COUNT, ERROR_MESSAGES } from './consts.js';
 import { chekMaxStringLength } from './utils.js';
 
 const checkHashtagIsFirst = (value) => value.split(' ').every((word) => word.startsWith('#'));
@@ -11,7 +11,7 @@ const checkMaxHashtagLength = (value) => value.split(' ').every((word) => chekMa
 
 const checkHashtagCount = (value) => value.split(' ').length < MAX_HASHTAG_COUNT + 1;
 
-const checkduplicateHashtags = (value) => {
+const checkDuplicateHashtags = (value) => {
   const hashtags = value.toLowerCase().split(' ');
   const uniqueHashtags = new Set(hashtags);
   return hashtags.length === uniqueHashtags.size;
@@ -20,24 +20,24 @@ const checkduplicateHashtags = (value) => {
 export const addValidators = (pristine, hashtagsField, descriptionField) => {
   pristine.addValidator(hashtagsField,
     (value) => value === '' ? true : checkHashtagCount(value),
-    `Максимальное число хэш-тегов - ${MAX_HASHTAG_COUNT}`, 6, true);
+    ERROR_MESSAGES.MAX_HASHTAG_COUNT_ERROR, 6, true);
   pristine.addValidator(hashtagsField,
     (value) => value === '' ? true : checkHashtagIsFirst(value),
-    'Все хэш-теги должны начинаться с символа "#"', 5, true);
+    ERROR_MESSAGES.HASHTAG_IS_FIRST_ERROR, 5, true);
   pristine.addValidator(hashtagsField,
     (value) => value === '' ? true : checkMinHashtagsLength(value),
-    'Хештег не может состоять только из символа "#"', 4, true);
+    ERROR_MESSAGES.MIN_HASHTAGS_LENGTH_ERROR, 4, true);
   pristine.addValidator(hashtagsField,
     (value) => value === '' ? true : checkMaxHashtagLength(value),
-    `Максимальная длина хэш-тега ${MAX_HASHTAG_LENGTH} символов`, 3, true);
+    ERROR_MESSAGES.MAX_HASHTAGS_LENGTH_ERROR, 3, true);
   pristine.addValidator(hashtagsField,
     (value) => value === '' ? true : checkHashtagsSymbols(value),
-    'Хэш-тег может состоять только из символа "#", букв и цифр', 2, true);
+    ERROR_MESSAGES.HASHTAGS_SYMBOLS_ERROR, 2, true);
   pristine.addValidator(hashtagsField,
-    (value) => value === '' ? true : checkduplicateHashtags(value),
-    'Хэш-тэги не должны повторяться (не чувствительны к регистру)', 1, true);
+    (value) => value === '' ? true : checkDuplicateHashtags(value),
+    ERROR_MESSAGES.DUPLICATE_HASTAGS_ERROR, 1, true);
 
   pristine.addValidator(descriptionField,
     (value) => value === '' ? true : chekMaxStringLength(value, MAX_COMMENT_LENGTH),
-    `Максимальная длина комментария ${MAX_COMMENT_LENGTH} символов lkf`, 1, true);
+    ERROR_MESSAGES.MAX_DESCRIPTION_LENGTH_ERROR, 1, true);
 };

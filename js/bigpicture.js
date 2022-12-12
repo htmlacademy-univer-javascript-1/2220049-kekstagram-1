@@ -37,7 +37,7 @@ const сloseButtonClickHandler = () => {
   closeBigPicture();
 };
 
-const сloseKeyDownHandler = (evt) => {
+const documentKeyDownHandler = (evt) => {
   if (isEscapeKey(evt)) {
     closeBigPicture();
   }
@@ -47,7 +47,7 @@ function closeBigPicture() {
   bigPicture.classList.add('hidden');
   document.querySelector('body').classList.remove('modal-open');
   bigPictureCloseButton.removeEventListener('click', сloseButtonClickHandler);
-  document.removeEventListener('keydown', сloseKeyDownHandler);
+  document.removeEventListener('keydown', documentKeyDownHandler);
 }
 
 export const showBigPicture = (photo) => {
@@ -57,5 +57,5 @@ export const showBigPicture = (photo) => {
   bigPicture.querySelector('.comments-loader').classList.add('hidden');
   document.querySelector('body').classList.add('modal-open');
   bigPictureCloseButton.addEventListener('click', сloseButtonClickHandler);
-  document.addEventListener('keydown', сloseKeyDownHandler);
+  document.addEventListener('keydown', documentKeyDownHandler);
 };
