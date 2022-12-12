@@ -1,7 +1,11 @@
+export const HASHTAG_REGEXP = /^#[A-Za-zА-Яа-яЁё0-9]{1,19}$/;
 export const MIN_COUNT_LIKE = 15;
 export const MAX_COUNT_LIKE = 200;
 export const PHOTOS_COUNT = 25;
 export const COMMENTS_COUNT = 5;
+export const MAX_HASHTAG_LENGTH = 20;
+export const MAX_HASHTAG_COUNT = 5;
+export const MAX_COMMENT_LENGTH = 140;
 export const COMMENTS_MESSAGES = [
   'Всё отлично!',
   'В целом всё неплохо. Но не всё.',
@@ -29,3 +33,13 @@ export const DESCRIPTIONS = [
   'Как часто вы занимаетесь спортом?',
   'Побывал на концерте любимого исполнителя'
 ];
+
+export const ERROR_MESSAGES = {
+  MAX_HASHTAG_COUNT_ERROR: `Максимальное число хэш-тегов - ${MAX_HASHTAG_COUNT}`,
+  HASHTAG_IS_FIRST_ERROR: 'Все хэш-теги должны начинаться с символа "#"',
+  MIN_HASHTAGS_LENGTH_ERROR: 'Хэш-тег не может состоять только из символа "#"',
+  MAX_HASHTAGS_LENGTH_ERROR: `Максимальная длина хэш-тега ${MAX_HASHTAG_LENGTH} символов`,
+  HASHTAGS_SYMBOLS_ERROR: 'Хэш-тег может состоять только из символа "#", букв и цифр',
+  DUPLICATE_HASTAGS_ERROR: 'Хэш-тэги не должны повторяться (не чувствительны к регистру)',
+  MAX_DESCRIPTION_LENGTH_ERROR: `Максимальная длина комментария ${MAX_COMMENT_LENGTH} символов`
+};
