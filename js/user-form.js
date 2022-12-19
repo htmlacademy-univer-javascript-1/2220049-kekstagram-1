@@ -2,19 +2,20 @@ import { isEscapeKey } from './utils.js';
 import { addValidators } from './form-validator.js';
 import { initPreviewScaleControlls, removeEvtListenerScaleControls } from './preview-scale.js';
 import { initFilters, destroySlider } from './preview-filters.js';
-import { UPLOAD_MESSAGE_TYPE } from './consts.js';
+import { UPLOAD_MESSAGE_TYPE, FILE_TYPES } from './consts.js';
 import { openUploadResultMessage } from './upload-messages.js';
-
 import { sendDataToServer } from './api.js';
 
-const uploadFileElement = document.querySelector('.img-upload__input');
+const uploadFileElement = document.querySelector('#upload-file');
 const formElement = document.querySelector('.img-upload__form');
 const imgUploadOverlayElement = formElement.querySelector('.img-upload__overlay');
 const bodyElement = document.querySelector('body');
-const closeButtonElement = formElement.querySelector('.img-upload__cancel');
+const closeButtonElement = formElement.querySelector('#upload-cancel');
 const hashtagsFieldElement = formElement.querySelector('.text__hashtags');
 const descriptionFieldElement = document.querySelector('.text__description');
 const submitButtonElement = document.querySelector('.img-upload__submit');
+const imgUploadPreviewElement = document.querySelector('.img-upload__preview img');
+const effectsPreviewElements = document.querySelectorAll('.effects__preview');
 
 const pristine = new Pristine(formElement, {
   classTo: 'img-upload__field-wrapper',
@@ -85,8 +86,16 @@ const openForm = () => {
 
 const uploadFileChangeHandler = () => {
   const file = uploadFileElement.files[0];
-  if (!file.type.startsWith('image/')) {
-    return;
+  const fileName = file.name.toLowerCase();
+
+  const matches = FILE_TYPES.some((ending) => fileName.endsWith(ending));
+
+  if (matches) {
+    const pictureUrl = URL.createObjectURL(file);
+    imgUploadPreviewElement.src = pictureUrl;
+    effectsPreviewElements.forEach((effect) => {
+      effect.style.backgroundImage = `url(${pictureUrl})`;
+    });
   }
   openForm();
 };

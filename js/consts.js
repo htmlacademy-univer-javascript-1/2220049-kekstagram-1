@@ -10,9 +10,10 @@ export const PREVIEW_SCALE_STEP = 25;
 export const PREVIEW_MIN_SCALE = 25;
 export const PREVIEW_MAX_SCALE = 100;
 export const PREVIEW_DEFAULT_SCALE = 100;
-
 export const MAX_COUNT_RANDOM_PHOTO = 10;
 export const TIMEOUT_THUBNAILS_FILTERS = 500;
+
+export const FILE_TYPES = ['png', 'jpeg', 'jpg', 'gif'];
 
 export const ERROR_MESSAGES = {
   MAX_HASHTAG_COUNT: `Максимальное число хэш-тегов - ${MAX_HASHTAG_COUNT}`,
