@@ -1,7 +1,12 @@
-import { createPhotos } from './data.js';
 import { drowThumbnails } from './thumbnails.js';
 import { connectUploadModule } from './user-Form.js';
+import { getDataFromServer } from './api.js';
+import { initFilters } from './thumbnails_filters.js';
 
-const data = createPhotos();
-drowThumbnails(data);
-connectUploadModule();
+
+getDataFromServer((photos) => {
+  drowThumbnails(photos);
+  connectUploadModule();
+  initFilters(photos);
+});
+

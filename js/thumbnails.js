@@ -22,3 +22,8 @@ export const drowThumbnails = (photos)  => {
   }
   picturesElement.appendChild(picturesFragment);
 };
+
+export const removeThumbnails = () => {
+  const photos = document.querySelectorAll('.picture');
+  photos.forEach((element) => element.remove());
+};

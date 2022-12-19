@@ -10,33 +10,8 @@ export const PREVIEW_SCALE_STEP = 25;
 export const PREVIEW_MIN_SCALE = 25;
 export const PREVIEW_MAX_SCALE = 100;
 export const PREVIEW_DEFAULT_SCALE = 100;
-export const COMMENTS_MESSAGES = [
-  'Всё отлично!',
-  'В целом всё неплохо. Но не всё.',
-  'Когда вы делаете фотографию, хорошо бы убирать палец из кадра. В конце концов это просто непрофессионально.',
-  'Моя бабушка случайно чихнула с фотоаппаратом в руках и у неё получилась фотография лучше.',
-  'Я поскользнулся на банановой кожуре и уронил фотоаппарат на кота и у меня получилась фотография лучше.',
-  'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!'
-];
-export const NAMES = [
-  'Илья',
-  'Артем',
-  'Ксения',
-  'Евгений',
-  'Максим',
-  'Денис',
-  'Ольга',
-  'Анастасия'
-];
-export const DESCRIPTIONS = [
-  'А мы поехали на море',
-  'Горы прекрасны всегда!',
-  'Любите ли вы кофе так, как люблю его я?',
-  'Семейный поход в театр удался!',
-  'Новая фотосессия',
-  'Как часто вы занимаетесь спортом?',
-  'Побывал на концерте любимого исполнителя'
-];
+export const MAX_COUNT_RANDOM_PHOTO = 10;
+export const TIMEOUT_THUBNAILS_FILTERS = 500;
 
 export const ERROR_MESSAGES = {
   MAX_HASHTAG_COUNT_ERROR: `Максимальное число хэш-тегов - ${MAX_HASHTAG_COUNT}`,
@@ -100,4 +75,11 @@ export const PREVIEW_EFFECT_SETTINGS = {
     style: 'brightness',
     unit: '',
   },
+};
+
+export const ALERT_SHOW_TIME = 5000;
+
+export const UPLOAD_MESSAGE_TYPE = {
+  SUCCESS: 'success',
+  ERROR: 'error'
 };
