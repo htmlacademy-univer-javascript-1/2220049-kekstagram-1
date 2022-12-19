@@ -20,19 +20,19 @@ const checkDuplicateHashtags = (value) => {
 export const addValidators = (pristine, hashtagsField, descriptionField) => {
   pristine.addValidator(hashtagsField,
     (value) => value === '' ? true : checkHashtagCount(value),
-    ERROR_MESSAGES.MAX_HASHTAG_COUNT_ERROR, 6, true);
+    ERROR_MESSAGES.MAX_HASHTAG_COUNT, 6, true);
   pristine.addValidator(hashtagsField,
     (value) => value === '' ? true : checkHashtagIsFirst(value),
-    ERROR_MESSAGES.HASHTAG_IS_FIRST_ERROR, 5, true);
+    ERROR_MESSAGES.HASHTAG_IS_FIRST, 5, true);
   pristine.addValidator(hashtagsField,
     (value) => value === '' ? true : checkMinHashtagsLength(value),
-    ERROR_MESSAGES.MIN_HASHTAGS_LENGTH_ERROR, 4, true);
+    ERROR_MESSAGES.MIN_HASHTAGS_LENGTH, 4, true);
   pristine.addValidator(hashtagsField,
     (value) => value === '' ? true : checkMaxHashtagLength(value),
-    ERROR_MESSAGES.MAX_HASHTAGS_LENGTH_ERROR, 3, true);
+    ERROR_MESSAGES.MAX_HASHTAGS_LENGTH, 3, true);
   pristine.addValidator(hashtagsField,
     (value) => value === '' ? true : checkHashtagsSymbols(value),
-    ERROR_MESSAGES.HASHTAGS_SYMBOLS_ERROR, 2, true);
+    ERROR_MESSAGES.HASHTAGS_SYMBOLS, 2, true);
   pristine.addValidator(hashtagsField,
     (value) => value === '' ? true : checkDuplicateHashtags(value),
     ERROR_MESSAGES.DUPLICATE_HASTAGS_ERROR, 1, true);

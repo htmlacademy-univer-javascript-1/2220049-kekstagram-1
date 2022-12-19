@@ -10,15 +10,16 @@ export const PREVIEW_SCALE_STEP = 25;
 export const PREVIEW_MIN_SCALE = 25;
 export const PREVIEW_MAX_SCALE = 100;
 export const PREVIEW_DEFAULT_SCALE = 100;
+
 export const MAX_COUNT_RANDOM_PHOTO = 10;
 export const TIMEOUT_THUBNAILS_FILTERS = 500;
 
 export const ERROR_MESSAGES = {
-  MAX_HASHTAG_COUNT_ERROR: `Максимальное число хэш-тегов - ${MAX_HASHTAG_COUNT}`,
-  HASHTAG_IS_FIRST_ERROR: 'Все хэш-теги должны начинаться с символа "#"',
-  MIN_HASHTAGS_LENGTH_ERROR: 'Хэш-тег не может состоять только из символа "#"',
-  MAX_HASHTAGS_LENGTH_ERROR: `Максимальная длина хэш-тега ${MAX_HASHTAG_LENGTH} символов`,
-  HASHTAGS_SYMBOLS_ERROR: 'Хэш-тег может состоять только из символа "#", букв и цифр',
+  MAX_HASHTAG_COUNT: `Максимальное число хэш-тегов - ${MAX_HASHTAG_COUNT}`,
+  HASHTAG_IS_FIRST: 'Все хэш-теги должны начинаться с символа "#"',
+  MIN_HASHTAGS_LENGTH: 'Хэш-тег не может состоять только из символа "#"',
+  MAX_HASHTAGS_LENGTH: `Максимальная длина хэш-тега ${MAX_HASHTAG_LENGTH} символов`,
+  HASHTAGS_SYMBOLS: 'Хэш-тег может состоять только из символа "#", букв и цифр',
   DUPLICATE_HASTAGS_ERROR: 'Хэш-тэги не должны повторяться (не чувствительны к регистру)',
   MAX_DESCRIPTION_LENGTH_ERROR: `Максимальная длина комментария ${MAX_COMMENT_LENGTH} символов`
 };
@@ -76,6 +77,7 @@ export const PREVIEW_EFFECT_SETTINGS = {
     unit: '',
   },
 };
+
 
 export const ALERT_SHOW_TIME = 5000;
 

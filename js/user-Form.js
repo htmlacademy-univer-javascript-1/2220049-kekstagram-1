@@ -4,6 +4,7 @@ import { initPreviewScaleControlls, removeEvtListenerScaleControls } from './pre
 import { initFilters, destroySlider } from './preview-filters.js';
 import { UPLOAD_MESSAGE_TYPE } from './consts.js';
 import { openUploadResultMessage } from './upload-messages.js';
+
 import { sendDataToServer } from './api.js';
 
 const uploadFileElement = document.querySelector('.img-upload__input');

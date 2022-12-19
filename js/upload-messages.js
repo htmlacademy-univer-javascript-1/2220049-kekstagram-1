@@ -1,5 +1,7 @@
 import { isEscapeKey } from './utils.js';
+
 import { UPLOAD_MESSAGE_TYPE, ALERT_SHOW_TIME } from './consts.js';
+
 
 const uploadMessageTemplateSelector = {
   [UPLOAD_MESSAGE_TYPE.SUCCESS]: '#success',

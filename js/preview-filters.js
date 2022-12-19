@@ -19,7 +19,7 @@ const imageEffectReset = () => {
   effectSliderContainerElement.classList.add('hidden');
 };
 
-const onChangeImageEffect = (evt) => {
+const changeImageEffectHandler = (evt) => {
   const effectName = evt.target.value;
   imgUploadPreviewElement.className = '';
   imgUploadPreviewElement.classList.add(`effects__preview--${effectName}`);
@@ -31,7 +31,7 @@ const onChangeImageEffect = (evt) => {
   }
 };
 
-const onEffectValueChange = (handlersValue) => {
+const effectValueChangeHandler = (handlersValue) => {
   const value = handlersValue[0];
   const effectName = imageUploadFormElement.effect.value;
   if (effectName === NO_PREVIEW_EFFECT) {
@@ -44,7 +44,7 @@ const onEffectValueChange = (handlersValue) => {
 };
 
 export const initFilters = () => {
-  effectSliderContainerElement.classList.add('hidden');
+  imageEffectReset();
   const uiSlider = noUiSlider.create(effectLevelSliderElement, {
     range: {min: 0, max: 1,},
     start: 1,
@@ -63,12 +63,12 @@ export const initFilters = () => {
     },
   });
 
-  uiSlider.on('update', onEffectValueChange);
+  uiSlider.on('update', effectValueChangeHandler);
 
-  imgEffectsFieldsetElement.addEventListener('change', onChangeImageEffect);
+  imgEffectsFieldsetElement.addEventListener('change', changeImageEffectHandler);
 };
 
 export const destroySlider = () => {
-  imgEffectsFieldsetElement.removeEventListener('change', onChangeImageEffect);
+  imgEffectsFieldsetElement.removeEventListener('change', changeImageEffectHandler);
   effectLevelSliderElement.noUiSlider.destroy();
 };
