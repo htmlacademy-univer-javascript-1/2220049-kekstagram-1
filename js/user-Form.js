@@ -2,6 +2,10 @@ import { isEscapeKey } from './utils.js';
 import { addValidators } from './form-validator.js';
 import { initPreviewScaleControlls, removeEvtListenerScaleControls } from './preview-scale.js';
 import { initFilters, destroySlider } from './preview-filters.js';
+import { UPLOAD_MESSAGE_TYPE } from './consts.js';
+import { openUploadResultMessage } from './upload-messages.js';
+import { sendDataToServer } from './load-data.js';
+
 const uploadFileElement = document.querySelector('.img-upload__input');
 const formElement = document.querySelector('.img-upload__form');
 const imgUploadOverlayElement = formElement.querySelector('.img-upload__overlay');
@@ -17,7 +21,7 @@ const pristine = new Pristine(formElement, {
   errorTextClass: 'img-upload__error-text'
 });
 
-const сloseKeyDownHandler = (evt) => {
+const closeKeyDownHandler = (evt) => {
   if (isEscapeKey(evt)) {
     closeForm();
   }
@@ -47,17 +51,34 @@ const descriptionFieldInputHandler = () => {
   submitButtonElement.disabled = !pristine.validate();
 };
 
+const sendPostSuccessHandler = () => {
+  openUploadResultMessage(UPLOAD_MESSAGE_TYPE.SUCCESS);
+  closeForm();
+};
+const sendPostFailedHandler = () => {
+  openUploadResultMessage(UPLOAD_MESSAGE_TYPE.ERROR);
+  submitButtonElement.disabled = false;
+};
+
+const submitHandler = (evt) => {
+  submitButtonElement.disabled = true;
+  evt.preventDefault();
+  const formData = new FormData(formElement);
+  sendDataToServer(formData, sendPostSuccessHandler, sendPostFailedHandler);
+};
+
 const openForm = () => {
   imgUploadOverlayElement.classList.remove('hidden');
   bodyElement.classList.add('modal-open');
   initPreviewScaleControlls();
-  document.addEventListener('keydown', сloseKeyDownHandler);
+  document.addEventListener('keydown', closeKeyDownHandler);
   closeButtonElement.addEventListener('click', closeButttonClickHandler);
   hashtagsFieldElement.addEventListener('keydown', hashtagsFieldEscHandler);
   descriptionFieldElement.addEventListener('keydown', descriptionFieldEscHandler);
   addValidators(pristine, hashtagsFieldElement, descriptionFieldElement);
   hashtagsFieldElement.addEventListener('input', hashtagsFieldInputHandler);
   descriptionFieldElement.addEventListener('input', descriptionFieldInputHandler);
+  formElement.addEventListener('submit', submitHandler);
   initFilters();
 };
 
@@ -74,9 +95,9 @@ export const connectUploadModule = () => {
 };
 
 function closeForm() {
-  imgUploadOverlayElement.classList.add('hidden');
+  formElement.reset();  imgUploadOverlayElement.classList.add('hidden');
   bodyElement.classList.remove('modal-open');
-  document.removeEventListener('keydown', сloseKeyDownHandler);
+  document.removeEventListener('keydown', closeKeyDownHandler);
   closeButtonElement.removeEventListener('click', closeButttonClickHandler);
   hashtagsFieldElement.removeEventListener('keydown', hashtagsFieldEscHandler);
   descriptionFieldElement.removeEventListener('keydown', descriptionFieldEscHandler);
