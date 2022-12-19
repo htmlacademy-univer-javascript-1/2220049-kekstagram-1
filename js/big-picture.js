@@ -1,5 +1,6 @@
 import { isEscapeKey } from './utils.js';
 import { COMMENTS_COUNT } from './consts.js';
+
 const bigPictureElement = document.querySelector('.big-picture');
 const bigPictureImgElement = bigPictureElement.querySelector('.big-picture__img').querySelector('img');
 const bigPictureLikesCounterElement = bigPictureElement.querySelector('.likes-count');
@@ -11,7 +12,6 @@ const bigPictureCommentsLoaderButtonElement = bigPictureElement.querySelector('.
 
 let actualComments = [];
 let countRenderedComments = COMMENTS_COUNT;
-
 
 const transformCommentToHTML = (comment) =>
   `<li class="social__comment">
@@ -41,7 +41,7 @@ const renderComments = () => {
   }
 };
 
-const onBigPictureCommentsLoaderButtonClick = () => {
+const bigPictureCommentsLoaderButtonClickHandler = () => {
   countRenderedComments += COMMENTS_COUNT;
   renderComments();
 };
@@ -57,7 +57,7 @@ const initComments = (comments) => {
   }
 
   renderComments();
-  bigPictureCommentsLoaderButtonElement.addEventListener('click', onBigPictureCommentsLoaderButtonClick);
+  bigPictureCommentsLoaderButtonElement.addEventListener('click', bigPictureCommentsLoaderButtonClickHandler);
 };
 
 const initBigPicture = (photo) => {
@@ -81,6 +81,7 @@ const documentKeyDownHandler = (evt) => {
 function closeBigPicture() {
   bigPictureElement.classList.add('hidden');
   document.querySelector('body').classList.remove('modal-open');
+  bigPictureCommentsLoaderButtonElement.classList.remove('hidden');
   bigPictureCloseButtonElement.removeEventListener('click', сloseButtonClickHandler);
   document.removeEventListener('keydown', documentKeyDownHandler);
   countRenderedComments = COMMENTS_COUNT;

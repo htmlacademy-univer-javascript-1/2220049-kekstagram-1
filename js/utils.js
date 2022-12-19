@@ -11,9 +11,5 @@ export const isEscapeKey = (evt) => evt.key === 'Escape';
 
 export const chekMaxStringLength = (string, max) => string.length < max + 1;
 
-export const putInInterval =(value, min, max) => {
-  value = value < min ? min : value;
-  value = value > max ? max : value;
-  return value;
-};
+export const putInInterval =(value, min, max) => Math.min(Math.max(value, min), max);
 
